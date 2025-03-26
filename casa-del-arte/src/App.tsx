@@ -25,13 +25,10 @@ function App() {
             <Route path="sculptures" element={<SculpturesContent />} />
             <Route path="albums" element={<AlbumsContent />} />
           </Route>
-          
-          {/* Redirección desde la raíz */}
-          <Route path="/" element={<Navigate to="/home/paintings" replace />} />
         </Route>
 
-        {/* Ruta de fallback */}
-        <Route path="*" element={<Navigate to="/home" replace />} />
+        Ruta de fallback
+        <Route path="/" element={<Navigate to="/login" replace />} />
       </Routes>
     </AuthProvider>
   );

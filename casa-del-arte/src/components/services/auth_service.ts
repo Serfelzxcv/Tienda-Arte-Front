@@ -39,3 +39,4 @@ export const register = async (userData: RegisterData) => {
     throw error;
   }
 };
+

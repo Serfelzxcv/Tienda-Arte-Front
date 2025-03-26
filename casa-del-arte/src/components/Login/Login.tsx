@@ -11,6 +11,7 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
+    console.log("Entra en el handleSubmit");
     e.preventDefault();
     setError('');
     try {
@@ -18,7 +19,7 @@ const Login: React.FC = () => {
       // Guarda el token (usando localStorage, cookies o contexto)
       localStorage.setItem('authToken', response.token);
       // Redirige al home
-      navigate('/paintings');
+      navigate('/home/paintings');
     } catch (error) {
       setError('Credenciales incorrectas o error de conexión');
     }

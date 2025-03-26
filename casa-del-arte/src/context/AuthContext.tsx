@@ -18,12 +18,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const login = (token: string) => {
     localStorage.setItem('authToken', token);
     setIsAuthenticated(true);
+    navigate('/home/paintings');  // Mueve la navegación aquí
   };
 
   const logout = () => {
     localStorage.removeItem('authToken');
     setIsAuthenticated(false);
     navigate('/login');
+    window.location.reload(); // Forzar recarga para limpiar estados
   };
 
   return (
