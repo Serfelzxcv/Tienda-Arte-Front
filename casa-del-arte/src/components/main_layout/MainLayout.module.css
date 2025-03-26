@@ -1,0 +1,29 @@
+/* Estilos base para todas las páginas */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .content {
+    display: flex;
+    flex: 1;
+  }
+  
+  .mainContent {
+    flex: 1;
+    padding: 2rem;
+    margin-left: 280px; /* Ancho del sidebar */
+    background-color: #f8f9fa;
+    overflow-y: auto;
+    height: calc(100vh - 64px); /* Restar altura del AppBar */
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .mainContent {
+      margin-left: 0;
+      padding: 1rem;
+      height: calc(100vh - 56px);
+    }
+  }

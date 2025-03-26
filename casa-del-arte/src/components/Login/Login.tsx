@@ -18,7 +18,7 @@ const Login: React.FC = () => {
       // Guarda el token (usando localStorage, cookies o contexto)
       localStorage.setItem('authToken', response.token);
       // Redirige al home
-      navigate('/home');
+      navigate('/paintings');
     } catch (error) {
       setError('Credenciales incorrectas o error de conexión');
     }

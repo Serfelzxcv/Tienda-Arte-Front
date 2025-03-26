@@ -1,0 +1,110 @@
+/* Sculptures.module.css */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin-left: 280px; /* Igual al ancho del sidebar */
+    background-color: #f5f7fa;
+    width: calc(100% - 280px); /* Ocupa el ancho restante */
+}
+
+.content {
+    display: flex;
+    flex: 1;
+    min-height: 100%; /* Asegura que ocupe toda la altura */
+}
+
+.mainContent {
+    flex: 1;
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin: 24px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow-y: auto; /* Permite scroll si el contenido es muy largo */
+    height: calc(100vh - 48px); /* Altura completa menos márgenes */
+    display: flex;
+    flex-direction: column;
+}
+
+.pageTitle {
+    color: #2c3e50;
+    margin-bottom: 24px;
+    font-size: 2rem;
+    font-weight: 600;
+    border-bottom: 2px solid #4a6baf;
+    padding-bottom: 8px;
+    flex-shrink: 0; /* Evita que el título se reduzca */
+}
+
+/* Contenedor del grid que ocupará el espacio restante */
+.sculpturesContainer {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.sculpturesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+    padding-bottom: 24px; /* Espacio inferior */
+}
+
+.sculptureCard {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* Ocupa toda la altura del grid item */
+}
+
+.sculptureCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .container {
+        margin-left: 240px;
+        width: calc(100% - 240px);
+    }
+}
+
+@media (max-width: 992px) {
+    .mainContent {
+        margin: 16px;
+        height: calc(100vh - 32px);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-left: 0;
+        width: 100%;
+        padding-top: 56px; /* Para el AppBar móvil */
+    }
+    
+    .mainContent {
+        margin: 12px;
+        padding: 16px;
+        height: calc(100vh - 56px - 24px); /* Resta altura del AppBar y márgenes */
+    }
+    
+    .pageTitle {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .sculpturesGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .mainContent {
+        margin: 8px;
+        height: calc(100vh - 56px - 16px);
+    }
+}
