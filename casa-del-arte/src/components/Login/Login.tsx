@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 import loginImage from '../../assets/login_image.png';
-import { login } from '../services/auth_service';
+import { login as loginService } from '../services/auth_service';
+import { useAuth } from '../../context/AuthContext';
+
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');
@@ -10,20 +12,19 @@ const Login: React.FC = () => {
   const [error, setError] = useState<string>('');
   const navigate = useNavigate();
 
+  const { login } = useAuth(); // ← importante
+
   const handleSubmit = async (e: React.FormEvent) => {
-    console.log("Entra en el handleSubmit");
     e.preventDefault();
     setError('');
     try {
-      const response = await login(username, password);
-      // Guarda el token (usando localStorage, cookies o contexto)
-      localStorage.setItem('authToken', response.token);
-      // Redirige al home
-      navigate('/home/paintings');
+      const response = await loginService(username, password); // le cambié el nombre para evitar colisión con el login del contexto
+      login(response.token); // ← esto actualiza el estado del contexto y navega
     } catch (error) {
       setError('Credenciales incorrectas o error de conexión');
     }
   };
+  
 
   return (
     <div className={styles.splitContainer}>
