@@ -58,6 +58,7 @@ const Sidebar = () => {
             primaryTypographyProps={{ 
               variant: 'h6',
               className: styles.titleText
+            
             }}
           />
         </ListItemButton>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './Login.module.css';
 import loginImage from '../../assets/login_image.png';
 import { login as loginService } from '../services/auth_service';
@@ -8,9 +8,9 @@ import { useAuth } from '../../context/AuthContext';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');
+   
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
-  const navigate = useNavigate();
 
   const { login } = useAuth(); // ← importante
 
