@@ -1,14 +1,22 @@
-import { Routes, Route } from 'react-router-dom'
-import Login from './components/Login/Login'
-import Home from './components/Home/Home'
-
+import { Navigate, Route } from 'react-router-dom';
+import { Routes } from 'react-router-dom';
+import Home from './components/home/Home';
+import { AuthProvider } from './context/auth_context';
+import ProtectedRoute from './components/protected_route';
+import Login from './components/login/Login';
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/home" element={<Home />} />
-    </Routes>
-  )
+    <AuthProvider>
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/login" element={<Login />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/home" element={<Home />} />
+          {/* Otras rutas protegidas */}
+        </Route>
+      </Routes>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;
