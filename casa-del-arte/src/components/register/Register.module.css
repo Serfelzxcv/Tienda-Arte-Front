@@ -1,0 +1,215 @@
+/* Copia exactamente los mismos estilos de Login.module.css */
+.splitContainer {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .imageSection {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background:#3a5a9f;
+  }
+  
+  /* .imageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+   */
+  .loginImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .imageSection:hover .loginImage {
+    transform: scale(1.05);
+  }
+  
+  .imageContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 2;
+    width: 80%;
+  }
+  
+  .imageContent h1 {
+    font-size: 2.5rem;
+    margin: 0.5rem 0;
+    font-weight: 700;
+  }
+  
+  .imageContent h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 400;
+  }
+  
+  .imageContent p {
+    font-size: 1rem;
+    margin-top: 1rem;
+    opacity: 0.9;
+  }
+  
+  .loginSection {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3a5a9f;
+    padding: 2rem;
+  }
+  
+  .loginBox {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .loginBox:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  }
+  
+  .logoContainer {
+    margin-bottom: 2rem;
+  }
+  
+  .loginTitle {
+    color: #2c3e50;
+    margin-bottom: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .loginTitle::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: #4a6baf;
+  }
+  
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+  }
+  
+  .formGroup label {
+    font-weight: 600;
+    color: #555;
+    font-size: 0.95rem;
+  }
+  
+  .formGroup input {
+    padding: 0.9rem 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .formGroup input:focus {
+    border-color: #4a6baf;
+    box-shadow: 0 0 0 3px rgba(74, 107, 175, 0.2);
+    outline: none;
+  }
+  
+  .loginButton {
+    background-color: #4a6baf;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+  }
+  
+  .loginButton:hover {
+    background-color: #3a5a9f;
+    transform: translateY(-2px);
+  }
+  
+  .errorMessage {
+    color: #e74c3c;
+    margin: -1rem 0 0.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  .additionalOptions {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .registerText {
+    color: #7f8c8d;
+    margin: 0;
+  }
+  
+  .registerLink {
+    color: #4a6baf;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .registerLink:hover {
+    color: #3a5a9f;
+  }
+  
+  /* Responsive (igual que en login) */
+  @media (max-width: 768px) {
+    .splitContainer {
+      flex-direction: column;
+      height: auto;
+      min-height: 100vh;
+    }
+  
+    .imageSection {
+      flex: none;
+      height: 40vh;
+    }
+  
+    .loginSection {
+      flex: none;
+      padding: 2rem 1rem;
+    }
+  
+    .loginBox {
+      margin: -3rem auto 2rem;
+      width: 90%;
+    }
+  }

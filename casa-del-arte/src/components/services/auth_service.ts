@@ -17,3 +17,25 @@ export const login = async (username: string, password: string) => {
     throw error;
   }
 };
+
+interface RegisterData {
+  username: string;
+  password: string;
+  email: string;
+  first_name?: string;
+  last_name?: string;
+}
+
+export const register = async (userData: RegisterData) => {
+  try {
+    const response = await axios.post(`${API_URL}/api/registro/`, userData);
+
+    console.log(`Registro enviado a: ${API_URL}/api/registro/`);
+    console.log("Datos del usuario:", userData);
+
+    return response.data;
+  } catch (error) {
+    console.error("Error en el registro:", error);
+    throw error;
+  }
+};

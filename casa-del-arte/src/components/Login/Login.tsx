@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 import loginImage from '../../assets/login_image.png';
 import { login } from '../services/auth_service';
@@ -70,7 +70,8 @@ const Login: React.FC = () => {
             <div className={styles.additionalOptions}>
               <a href="#" className={styles.forgotPassword}>¿Olvidaste tu contraseña?</a>
               <p className={styles.registerText}>
-                ¿No tienes cuenta? <a href="#" className={styles.registerLink}>Regístrate</a>
+                ¿No tienes cuenta? 
+                <Link to="/register" className={styles.registerLink}>Regístrate</Link>
               </p>
             </div>
           </form>
