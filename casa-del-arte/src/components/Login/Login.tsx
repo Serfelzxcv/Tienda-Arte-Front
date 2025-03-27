@@ -19,12 +19,12 @@ const Login: React.FC = () => {
     setError('');
     try {
       const response = await loginService(username, password); // le cambié el nombre para evitar colisión con el login del contexto
+      console.log('Respuesta del backend:', response);
       login(response.token); // ← esto actualiza el estado del contexto y navega
     } catch (error) {
       setError('Credenciales incorrectas o error de conexión');
     }
   };
-  
 
   return (
     <div className={styles.splitContainer}>
