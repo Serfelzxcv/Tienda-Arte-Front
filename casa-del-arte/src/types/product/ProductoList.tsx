@@ -1,35 +1,19 @@
-import React from 'react';
-import useProductos from '../hooks/useProductos';
+// ProductCard.tsx
+import { Producto } from '../../components/pages/paintings/Paintings';
+import styles from '../../components/main_layout/MainLayout.module.css';
 
-const ProductoList: React.FC = () => {
-  const { productos, loading, error } = useProductos();
-
-  if (loading) return <div>Cargando productos...</div>;
-  if (error) return <div>Error: {error}</div>;
-
-  return (
-    <div>
-      <h2>Lista de Productos</h2>
-      <ul>
-        {productos.map((producto) => (
-          <li key={producto.id}>
-            <h3>{producto.nombre}</h3>
-            <p>{producto.descripcion}</p>
-            <p>Precio: ${producto.precio}</p>
-            <p>Categoría: {producto.categoria}</p>
-            <p>Stock: {producto.stock}</p>
-            {producto.imagen && (
-              <img 
-                src={producto.imagen} 
-                alt={producto.nombre} 
-                style={{ maxWidth: '200px' }} 
-              />
-            )}
-          </li>
-        ))}
-      </ul>
+const ProductCard = ({ producto }: { producto: Producto }) => (
+  <div className={styles.card}>
+    <img src={producto.imagen} alt={producto.nombre} className={styles.productImage} />
+    <div className={styles.cardContent}>
+      <h3>{producto.nombre}</h3>
+      <p>{producto.descripcion}</p>
+      <div className={styles.cardFooter}>
+        <span className={styles.cardPrice}>${producto.precio}</span>
+        <span className={styles.cardStock}>Stock: {producto.stock}</span>
+      </div>
     </div>
-  );
-};
+  </div>
+);
 
-export default ProductoList;
+export default ProductCard;
