@@ -1,12 +1,12 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/protected_route';
-import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Home from './components/pages/Home/Home';
 import AlbumsContent from './components/pages/albums/Albums';
 import PaintingsContent from './components/pages/paintings/Paintings';
 import SculpturesContent from './components/pages/sculptures/Sculptures';
+import Login from './components/Login/Login';
 
 
 function App() {

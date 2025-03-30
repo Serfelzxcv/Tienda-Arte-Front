@@ -1,4 +1,4 @@
-import styles from '../../main_layout/MainLayout.module.css';
+import styles from '../../MainLayout/MainLayout.module.css';
 
 const SculpturesContent = () => {
   return (

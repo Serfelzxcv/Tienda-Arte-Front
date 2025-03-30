@@ -1,4 +1,4 @@
-import MainLayout from "../../main_layout/MainLayout";
+import MainLayout from "../../MainLayout/MainLayout";
 import { Outlet } from 'react-router-dom';
 
 const Home = () => {

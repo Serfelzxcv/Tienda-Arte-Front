@@ -1,6 +1,6 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
-import styles from '../../components/main_layout/MainLayout.module.css';
+import styles from '../../components/MainLayout/MainLayout.module.css';
 import { Producto } from './product';
 
 
