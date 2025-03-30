@@ -1,7 +1,7 @@
 import styles from '../../components/MainLayout/MainLayout.module.css';
 import { Producto } from './product';
 
-const ProductCard = ({ producto }: { producto: Producto }) => (
+const ProductCard = ({ producto, onDelete }: { producto: Producto; onDelete: (id: number) => void }) => (
   <div className={styles.card}>
     <div className={styles.imageContainer}>
       <img src={producto.imagen} alt={producto.nombre} className={styles.productImage} />
@@ -15,6 +15,7 @@ const ProductCard = ({ producto }: { producto: Producto }) => (
         <span className={styles.cardPrice}>${producto.precio}</span>
         <span className={styles.cardStock}>Stock: {producto.stock}</span>
       </div>
+      <button className={styles.deleteButton} onClick={() => onDelete(producto.id)}>Eliminar</button>
     </div>
   </div>
 );
