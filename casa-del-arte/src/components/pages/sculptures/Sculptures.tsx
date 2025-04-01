@@ -61,7 +61,7 @@ const SculpturesContent = () => {
   return (
     <div className={styles.pageContent}>
       <div className={styles.headerContainer}>
-        <h1 className={styles.pageTitle}>Pinturas</h1>
+        <h1 className={styles.pageTitle}>Esculturas</h1>
         <button className={styles.addButton} onClick={() => setShowDialog(true)}>añadir +</button>
       </div>
 

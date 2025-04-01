@@ -8,7 +8,6 @@ import { useAuth } from '../../context/AuthContext';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');
-   
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
 
@@ -20,7 +19,7 @@ const Login: React.FC = () => {
     try {
       const response = await loginService(username, password);
       console.log('Respuesta del backend:', response);
-      login(response.access); // ← corrección aquí
+      login(response.access, response.user); // ← corrección aquí
     } catch (error) {
       setError('Credenciales incorrectas o error de conexión');
     }
