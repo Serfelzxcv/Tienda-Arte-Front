@@ -1,114 +1,160 @@
-/* AppBar.module.css */
-
 .appBar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 64px;
-    background-color: #0080ff;
-    color: white;
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
-    z-index: 1100; /* Higher than sidebar */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-  }
-  
-  .appBarContent {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background-color: #0080ff;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  z-index: 1100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.appBarContent {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin: 0;
+  padding-right: 20px;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* Aumentado el espacio entre grupos */
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espacio entre userInfo y carrito */
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Espacio entre avatar y texto */
+}
+
+.userText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* Espacio entre nombre y saldo */
+}
+
+.userName {
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.userBalance {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  background-color: #ff5722;
+  font-weight: bold;
+}
+
+.cartContainer {
+  padding: 0 8px; /* Espacio alrededor del icono */
+}
+
+.cartIcon {
+  color: white;
+}
+
+.logoutContainer {
+  padding-left: 16px; /* Separación del botón del resto */
+}
+
+.logoutButton {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 6px 16px;
+  font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .appBar {
+    padding: 0 16px;
+    height: 56px;
   }
   
   .title {
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin: 0;
-    color: white;
+    font-size: 1.1rem;
+    padding-right: 12px;
   }
   
-  .logo {
-    display: flex;
-    align-items: center;
+  .rightSection {
+    gap: 16px;
+  }
+  
+  .userSection {
     gap: 12px;
   }
   
-  .logoIcon {
-    font-size: 1.8rem;
-    color: #4a6baf;
+  .userName {
+    display: none;
   }
   
-  .actions {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-  }
-  
-  .userMenu {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
+  .userBalance {
+    display: none;
   }
   
   .avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: #4a6baf;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
+    width: 32px;
+    height: 32px;
+  }
+  
+  .logoutContainer {
+    padding-left: 8px;
   }
   
   .logoutButton {
-    color: white !important;
-    border-color: rgba(255, 255, 255, 0.3) !important;
-    padding: 6px 12px !important;
-    text-transform: none !important;
+    padding: 4px 12px;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .appBar {
+    padding: 0 12px;
   }
   
-  .logoutButton:hover {
-    background-color: rgba(255, 255, 255, 0.08) !important;
+  .title {
+    font-size: 1rem;
   }
   
-  /* Responsive Design */
-  @media (max-width: 992px) {
-    .appBar {
-      padding: 0 16px;
-    }
-    
-    .title {
-      font-size: 1.1rem;
-    }
+  .rightSection {
+    gap: 12px;
   }
   
-  @media (max-width: 768px) {
-    .appBar {
-      height: 56px;
-      left: 0;
-    }
-    
-    .logoText {
-      display: none;
-    }
-    
-    .logoutButton {
-      padding: 4px 8px !important;
-      font-size: 0.8rem !important;
-    }
+  .userSection {
+    gap: 8px;
   }
   
-  @media (max-width: 576px) {
-    .appBar {
-      padding: 0 12px;
-    }
-    
-    .userName {
-      display: none;
-    }
+  .userBalance {
+    display: none;
   }
+  
+  .logoutButton {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+}

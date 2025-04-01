@@ -27,7 +27,8 @@ const PaintingContent = () => {
   }, []);
 
   const addProductToList = (producto: Producto) => {
-    setProductos([...productos, producto]);
+    setProductos(prevProductos => [...prevProductos, producto]);
+    console.log(productos);
   };
 
   const deleteProduct = async (id: number) => {
@@ -36,8 +37,6 @@ const PaintingContent = () => {
       await axios.delete(`http://localhost:8000/api/productos/${id}/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-
-      // Filtra la lista para eliminar el producto eliminado
       setProductos(productos.filter(producto => producto.id !== id));
     } catch (error) {
       console.error('Error eliminando producto:', error);
@@ -53,7 +52,7 @@ const PaintingContent = () => {
 
       <div className={styles.gridContainer}>
         {productos.map(producto => (
-          <ProductCard key={producto.id} producto={producto} onDelete={deleteProduct} />
+          <ProductCard key={producto.id} producto={producto} onDelete={deleteProduct} onAddToCart={addProductToList } />
         ))}
       </div>
 
