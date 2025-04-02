@@ -2,12 +2,12 @@ import { Button, Badge, IconButton, Avatar, Typography, Box } from '@mui/materia
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useAuth } from '../../context/AuthContext';
 import styles from './AppBar.module.css';
+import { useCart } from '../../context/CartContext';
 
 const AppBar = () => {
   const { user, logout } = useAuth();
-  const cartItemsCount = 0; // Cambiar por tu lógica de carrito
+  const { cartItemsCount } = useCart(); // Desestructuración correcta
   
-
   return (
     <header className={styles.appBar}>
       <Box className={styles.appBarContent}>

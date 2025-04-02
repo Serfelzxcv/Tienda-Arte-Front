@@ -67,7 +67,9 @@ const SculpturesContent = () => {
 
       <div className={styles.gridContainer}>
         {productos.map(producto => (
-          <ProductCard key={producto.id} producto={producto} onDelete={deleteProduct} />
+          <ProductCard key={producto.id} producto={producto} onDelete={deleteProduct} onAddToCart={function (producto: Producto): void {
+            throw new Error('Function not implemented.');
+          } } />
         ))}
       </div>
 

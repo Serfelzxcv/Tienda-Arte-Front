@@ -6,11 +6,13 @@ import Home from './components/pages/Home/Home';
 import AlbumsContent from './components/pages/albums/Albums';
 import PaintingsContent from './components/pages/paintings/Paintings';
 import SculpturesContent from './components/pages/sculptures/Sculptures';
-import Login from './components/login/Login';
+import Login from './components/Login/Login';
+import { CartProvider } from './context/CartContext';
 
 
 function App() {
   return (
+  <CartProvider >
     <AuthProvider>
       <Routes>
         {/* Rutas públicas */}
@@ -31,6 +33,7 @@ function App() {
         <Route path="/" element={<Navigate to="/login" replace />} />
       </Routes>
     </AuthProvider>
+  </CartProvider>
   );
 }
 

@@ -5,10 +5,13 @@ import styles from '../../MainLayout/MainLayout.module.css';
 import AddProductDialog from '../../../types/product/ProductoForm';
 import ProductCard from '../../../types/product/ProductCard';
 import { Producto } from '../../../types/product/product';
+import { useCart } from '../../../context/CartContext';
 
 const PaintingContent = () => {
+  const { addToCart } = useCart();
   const [showDialog, setShowDialog] = useState(false);
   const [productos, setProductos] = useState<Producto[]>([]);
+  const [shopingCarProducts, setshopingCar] = useState<Producto[]>([]);
 
   useEffect(() => {
     const fetchProductos = async () => {
@@ -26,9 +29,13 @@ const PaintingContent = () => {
     fetchProductos();
   }, []);
 
+  useEffect(() => {
+    console.log(shopingCarProducts);
+  }, [shopingCarProducts]);
+
+  // Cambia addProductToList para usar el contexto
   const addProductToList = (producto: Producto) => {
-    setProductos(prevProductos => [...prevProductos, producto]);
-    console.log(productos);
+    addToCart(producto);
   };
 
   const deleteProduct = async (id: number) => {
@@ -52,7 +59,7 @@ const PaintingContent = () => {
 
       <div className={styles.gridContainer}>
         {productos.map(producto => (
-          <ProductCard key={producto.id} producto={producto} onDelete={deleteProduct} onAddToCart={addProductToList } />
+          <ProductCard key={producto.id} producto={producto} onDelete={deleteProduct} onAddToCart={addProductToList} />
         ))}
       </div>
 
