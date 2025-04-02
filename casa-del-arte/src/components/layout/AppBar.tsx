@@ -1,13 +1,28 @@
+import { useState } from 'react';
 import { Button, Badge, IconButton, Avatar, Typography, Box } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useAuth } from '../../context/AuthContext';
 import styles from './AppBar.module.css';
 import { useCart } from '../../context/CartContext';
+import CartDialog from '../dialogs/CartDialog';
 
 const AppBar = () => {
   const { user, logout } = useAuth();
-  const { cartItemsCount } = useCart(); // Desestructuración correcta
-  
+  const { cartItems, cartItemsCount, removeFromCart } = useCart();
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const handleCartClick = () => {
+    setIsCartOpen(true);
+  };
+
+  const handleCloseCart = () => {
+    setIsCartOpen(false);
+  };
+
+  const handleRemoveItem = (productoId: number) => {
+    removeFromCart(productoId);
+  };
+
   return (
     <header className={styles.appBar}>
       <Box className={styles.appBarContent}>
@@ -33,7 +48,12 @@ const AppBar = () => {
               </Box>
 
               <Box className={styles.cartContainer}>
-                <IconButton color="inherit" className={styles.cartIcon}>
+                <IconButton 
+                  color="inherit" 
+                  className={styles.cartIcon}
+                  onClick={handleCartClick}
+                  aria-label="carrito de compras"
+                >
                   <Badge badgeContent={cartItemsCount} color="error">
                     <ShoppingCartIcon />
                   </Badge>
@@ -55,6 +75,14 @@ const AppBar = () => {
           </Box>
         </Box>
       </Box>
+
+      {/* Diálogo del carrito */}
+      <CartDialog 
+        open={isCartOpen} 
+        onClose={handleCloseCart} 
+        cartItems={cartItems}
+        onRemove={handleRemoveItem}
+      />
     </header>
   );
 };
