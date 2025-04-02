@@ -1,18 +1,16 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from '../../MainLayout/MainLayout.module.css';
-
 import AddProductDialog from '../../../types/product/ProductoForm';
 import ProductCard from '../../../types/product/ProductCard';
 import { Producto } from '../../../types/product/product';
 import { useCart } from '../../../context/CartContext';
 
 const PaintingContent = () => {
-  const { addToCart } = useCart();
+  const { addToCart } = useCart(); // Función del contexto para actualizar el carrito local
   const [showDialog, setShowDialog] = useState(false);
   const [productos, setProductos] = useState<Producto[]>([]);
-  const [shopingCarProducts, setshopingCar] = useState<Producto[]>([]);
-
+  
   useEffect(() => {
     const fetchProductos = async () => {
       try {
@@ -29,13 +27,32 @@ const PaintingContent = () => {
     fetchProductos();
   }, []);
 
-  useEffect(() => {
-    console.log(shopingCarProducts);
-  }, [shopingCarProducts]);
-
-  // Cambia addProductToList para usar el contexto
-  const addProductToList = (producto: Producto) => {
-    addToCart(producto);
+  // Función ajustada para agregar producto al carrito:
+  // Esta función se ejecuta cuando el usuario hace clic en "Añadir al carrito"
+  const addProductToList = async (producto: Producto) => {
+    try {
+      const token = localStorage.getItem('authToken');
+      // Llamada al endpoint para guardar el ítem en la BD
+      const response = await axios.post(
+        'http://localhost:8000/api/carrito/agregar/',
+        {
+          items: [{ producto_id: producto.id, cantidad: 1 }],
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      
+      if (response.status === 201 || response.status === 200) {
+        console.log(`Producto ${producto.nombre} agregado al carrito en el backend.`);
+        // Actualizamos el estado global (contexto) para reflejar el cambio localmente
+        addToCart(producto);
+      } else {
+        alert('Error al agregar al carrito.');
+      }
+    } catch (error) {
+      console.error('Error al agregar al carrito:', error);
+    }
   };
 
   const deleteProduct = async (id: number) => {
@@ -54,12 +71,19 @@ const PaintingContent = () => {
     <div className={styles.pageContent}>
       <div className={styles.headerContainer}>
         <h1 className={styles.pageTitle}>Pinturas</h1>
-        <button className={styles.addButton} onClick={() => setShowDialog(true)}>añadir +</button>
+        <button className={styles.addButton} onClick={() => setShowDialog(true)}>
+          añadir +
+        </button>
       </div>
 
       <div className={styles.gridContainer}>
         {productos.map(producto => (
-          <ProductCard key={producto.id} producto={producto} onDelete={deleteProduct} onAddToCart={addProductToList} />
+          <ProductCard 
+            key={producto.id} 
+            producto={producto} 
+            onDelete={deleteProduct} 
+            onAddToCart={addProductToList}  // Se pasa la función ajustada
+          />
         ))}
       </div>
 

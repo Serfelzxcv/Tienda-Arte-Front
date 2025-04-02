@@ -25,6 +25,8 @@ const AddProductDialog = ({ onClose, onProductAdded }: { onClose: () => void, on
     formData.append('stock', stock);
     if (imagen) formData.append('imagen', imagen);
 
+
+    
     try {
       const response = await axios.post('http://localhost:8000/api/productos/', formData, {
         headers: {
